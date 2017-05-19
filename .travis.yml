@@ -14,7 +14,10 @@ after_success:
   - git config user.email "luke.xie@yahoo.com"
   - git add --all .
   - git commit -m "Travis CI Auto Builder"
-  - git push https://$DEPLOY_TOKEN@github.com/lukexie/lukexie.github.io.git master
+  - git push --force --quiet "https://${DEPLOY_TOKEN}@${GH_REF}" master:master
 branches:
   only:
     - raw
+env:
+  global:
+  - GH_REF: github.com/lukexie/lukexie.github.io.git
